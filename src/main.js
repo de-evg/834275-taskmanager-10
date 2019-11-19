@@ -1,6 +1,5 @@
-/**
- * Создает разметку Главного меню
- */
+'use strict';
+
 const createMainMenuTemplate = () => {
   return (
     `<section class="control__btn-wrap">
@@ -34,9 +33,6 @@ const createMainMenuTemplate = () => {
   );
 };
 
-/**
- * Создает разметку Меню фильтра
- */
 const createFilterTemplate = () => {
   return (
     `<section class="main__filter filter container">
@@ -110,9 +106,6 @@ const createFilterTemplate = () => {
   );
 };
 
-/**
- * Создает разметку Контейнера доски задач
- */
 const createBoardTemplate = () => {
   return (
     `<section class="board container">
@@ -128,9 +121,6 @@ const createBoardTemplate = () => {
   );
 };
 
-/**
- * Создает разметку задачи
- */
 const createTaskTemplate = () => {
   return (
     `<article class="card card--black">
@@ -201,9 +191,6 @@ const createTaskTemplate = () => {
   );
 };
 
-/**
- * Создает разметку редактируемой задачи
- */
 const createTaskEditTemplate = () => {
   return (
     `<article class="card card--edit card--yellow card--repeat">
@@ -464,9 +451,6 @@ const createTaskEditTemplate = () => {
   );
 };
 
-/**
- * Создает разметку кнопки
- */
 const createLoadMoreButtonTemplate = () => {
   return (
     `<button class="load-more" type="button">load more</button>`
@@ -484,22 +468,22 @@ const render = (container, template, place) => {
   container.insertAdjacentHTML(place, template);
 };
 
-const siteMainElement = document.querySelector('.main');
-const siteControlElement = siteMainElement.querySelector('.main__control');
+const siteMainElement = document.querySelector(`.main`);
+const siteControlElement = siteMainElement.querySelector(`.main__control`);
 
-render(siteControlElement, createMainMenuTemplate(), 'beforeEnd');
-render(siteMainElement, createFilterTemplate(), 'beforeEnd');
-render(siteMainElement, createBoardTemplate(), 'beforeEnd');
+render(siteControlElement, createMainMenuTemplate(), `beforeEnd`);
+render(siteMainElement, createFilterTemplate(), `beforeEnd`);
+render(siteMainElement, createBoardTemplate(), `beforeEnd`);
 
-const taskListElement = siteMainElement.querySelector('.board__tasks');
-render(taskListElement, createTaskEditTemplate(), 'beforeEnd');
+const taskListElement = siteMainElement.querySelector(`.board__tasks`);
+render(taskListElement, createTaskEditTemplate(), `beforeEnd`);
 
 const TASK_COUNT = 3;
 new Array(TASK_COUNT)
-  .fill('')
+  .fill(``)
   .forEach(
-    () => render(taskListElement, createTaskTemplate(), 'beforeEnd')
+      () => render(taskListElement, createTaskTemplate(), `beforeEnd`)
   );
 
-const boardElement = siteMainElement.querySelector('.board');
-render(boardElement, createLoadMoreButtonTemplate(), 'beforeEnd');
+const boardElement = siteMainElement.querySelector(`.board`);
+render(boardElement, createLoadMoreButtonTemplate(), `beforeEnd`);
