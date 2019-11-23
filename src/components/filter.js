@@ -70,4 +70,5 @@ const createFilterTemplate = () => {
       </section>`
   );
 };
- export {createFilterTemplate};
+
+export {createFilterTemplate};
