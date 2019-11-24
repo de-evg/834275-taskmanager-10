@@ -1,9 +1,9 @@
-import {createMainMenuTemplate} from './components/mainMenu.js';
+import {createMainMenuTemplate} from './components/main-menu.js';
 import {createFilterTemplate} from './components/filter.js';
 import {createBoardTemplate} from './components/board.js';
 import {createTaskTemplate} from './components/task.js';
-import {createTaskEditTemplate} from './components/taskEdit.js';
-import {createLoadMoreButtonTemplate} from './components/loadMoreButton.js';
+import {createTaskEditTemplate} from './components/task-edit.js';
+import {createLoadMoreButtonTemplate} from './components/load-more-button.js';
 
 /**
  * Рендерит разметку
