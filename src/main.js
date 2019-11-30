@@ -4,6 +4,10 @@ import {createBoardTemplate} from './components/board.js';
 import {createTaskTemplate} from './components/task.js';
 import {createTaskEditTemplate} from './components/task-edit.js';
 import {createLoadMoreButtonTemplate} from './components/load-more-button.js';
+import {generateTasks} from './mock/task.js';
+import {generateFilters} from '.mock.filter.js';
+
+const TASK_COUNT = 22;
 
 /**
  * Рендерит разметку
@@ -15,23 +19,24 @@ import {createLoadMoreButtonTemplate} from './components/load-more-button.js';
 const render = (container, template, place) => {
   container.insertAdjacentHTML(place, template);
 };
-
 const siteMainElement = document.querySelector(`.main`);
 const siteControlElement = siteMainElement.querySelector(`.main__control`);
 
 render(siteControlElement, createMainMenuTemplate(), `beforeEnd`);
-render(siteMainElement, createFilterTemplate(), `beforeEnd`);
+
+const filters = generateFilters();
+render(siteMainElement, createFilterTemplate(filters), `beforeEnd`);
+
 render(siteMainElement, createBoardTemplate(), `beforeEnd`);
 
+const tasks = generateTasks(TASK_COUNT);
 const taskListElement = siteMainElement.querySelector(`.board__tasks`);
-render(taskListElement, createTaskEditTemplate(), `beforeEnd`);
-
-const TASK_COUNT = 3;
-new Array(TASK_COUNT)
-  .fill(``)
-  .forEach(
-      () => render(taskListElement, createTaskTemplate(), `beforeEnd`)
-  );
+render(taskListElement, createTaskTemplate(tasks[0]), `beforeEnd`);
+tasks.slice(1).forEach(
+    (task) => {
+      render(taskListElement, createTaskEditTemplate(task), `beforeEnd`);
+    }
+);
 
 const boardElement = siteMainElement.querySelector(`.board`);
 render(boardElement, createLoadMoreButtonTemplate(), `beforeEnd`);
