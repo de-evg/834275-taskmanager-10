@@ -1,5 +1,5 @@
-import {MonthNames} from '../const.js';
-import {formatTime} from '../utils.js';
+import {MonthNames} from '../mock/const.js';
+import {formatTime} from '../mock/utils.js';
 
 const createHashtagsMarkup = (hashtags) => {
   return hashtags
@@ -12,7 +12,7 @@ const createHashtagsMarkup = (hashtags) => {
         </span>`
       );
     })
-    .join(`/n`);
+    .join(`\n`);
 };
 
 const createTaskTemplate = (task) => {

@@ -19,9 +19,9 @@ const createColorsMarkup = (colors, currentColor) => {
           class="card__color card__color--${color}"
           >${color}</label
         >`
-      )
-      .join(`/n`);
-    });
+      );
+    })
+    .join(`\n`);
 };
 
 const createRepeatingDaysMarkup = (days, repeatingDays) => {
@@ -63,9 +63,9 @@ const createHashtags = (tags) => {
             delete
           </button>
         </span>`
-      )
-      .join(`/n`);
-    });
+      );
+    })
+    .join(`\n`);
 };
 
 const createTaskEditTemplate = (task) => {
