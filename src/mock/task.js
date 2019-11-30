@@ -38,7 +38,9 @@ const getRandomDate = () => {
   const sign = Math.random() > 0.5 ? 1 : -1;
   const diffValue = sign * getRandomIntegerNumber(0, 7);
 
-  targetDate.setDate = (targetDate.getDate() + diffValue);
+  targetDate.setDate(targetDate.getDate() + diffValue);
+
+  return targetDate;
 };
 
 const generateRepeatingDays = () => {
