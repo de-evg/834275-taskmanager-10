@@ -30,13 +30,13 @@ render(siteMainElement, createFilterTemplate(filters), `beforeEnd`);
 
 render(siteMainElement, createBoardTemplate(), `beforeEnd`);
 
-const tasks = generateTasks(TASK_COUNT);
-const taskListElement = siteMainElement.querySelector(`.board__tasks`);
-render(taskListElement, createTaskEditTemplate(tasks[0]), `beforeEnd`);
-
 const boardElement = siteMainElement.querySelector(`.board`);
 render(boardElement, createLoadMoreButtonTemplate(), `beforeEnd`);
 const loadMoreButton = boardElement.querySelector(`.load-more`);
+
+const tasks = generateTasks(TASK_COUNT);
+const taskListElement = siteMainElement.querySelector(`.board__tasks`);
+render(taskListElement, createTaskEditTemplate(tasks.splice(0, 1)[0]), `beforeEnd`);
 
 const renderTasks = (tasks) => {
   let showingTasks = tasks.splice(0, SHOWING_TASKS_COUNT);
