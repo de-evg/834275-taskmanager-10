@@ -45,7 +45,7 @@ const createRepeatingDaysMarkup = (days, repeatingDays) => {
     });
 };
 
-const createHashtags = (tags) => {
+const createHashtagsMarkup = (tags) => {
   return Array.from(tags)
     .map((tag) => {
       return (
@@ -77,11 +77,11 @@ const createTaskEditTemplate = (task) => {
   const date = isDateShowing ? `${dueDate.getDate()} ${MonthNames[dueDate.getMonth()]}` : ``;
   const time = isDateShowing ? formatTime(dueDate) : ``;
 
-  const isRepeatingTask = Object.values(repeatingDays).some(Boolean);
+  const isRepeatingTask = Object.values(repeatingDays).some((it) => it === true);
   const repeatClass = isRepeatingTask ? `card--repeat` : ``;
   const deadlineClass = isExpired ? `card--deadline` : ``;
 
-  const tagsMarkup = createHashtags(tags);
+  const tagsMarkup = createHashtagsMarkup(Array.from(tags));
   const colorsMarkup = createColorsMarkup(Colors, color);
   const repeatingDaysMarkup = createRepeatingDaysMarkup(Days, repeatingDays);
 
@@ -121,7 +121,7 @@ const createTaskEditTemplate = (task) => {
           type="text"
           placeholder=""
           name="date"
-          value=${date} ${time}"
+          value="${date} ${time}"
         />
         </label>
       </fieldset>` : ``}

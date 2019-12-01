@@ -35,25 +35,22 @@ const tasks = generateTasks(TASK_COUNT);
 const taskListElement = siteMainElement.querySelector(`.board__tasks`);
 render(taskListElement, createTaskEditTemplate(tasks[0]), `beforeEnd`);
 let showingTasksCount = SHOWIING_TASKS_COUNT_ON_START;
-tasks.slice(1, showingTasksCount).forEach(
-    (task) => {
-      render(taskListElement, createTaskTemplate(task), `beforeEnd`);
-    }
-);
 
 const boardElement = siteMainElement.querySelector(`.board`);
 render(boardElement, createLoadMoreButtonTemplate(), `beforeEnd`);
-
 const loadMoreButton = boardElement.querySelector(`.load-more`);
-loadMoreButton.addEventListener(`click`, () => {
-  const prevTasksCount = showingTasksCount;
-  showingTasksCount = prevTasksCount + SHOWIING_TASKS_COUNT_BY_BUTTON;
 
-  tasks.slice(prevTasksCount, showingTasksCount).forEach((task) => {
-    render(taskListElement, createTaskTemplate(task), `beforeEnd`);
-  });
-
-  if (showingTasksCount > tasks.length) {
+const renderTasks = (tasks, showingTasksCount) => {
+  let showingTasks = tasks.splice(0, showingTasksCount);
+  showingTasks.forEach(
+    (task) => render(taskListElement, createTaskTemplate(task), `beforeEnd`)
+  );
+  if (!tasks.length) {
     loadMoreButton.remove();
   }
+};
+renderTasks(tasks, showingTasksCount);
+
+loadMoreButton.addEventListener(`click`, () => {
+  renderTasks(tasks, showingTasksCount);
 });

@@ -7,13 +7,13 @@ const Descriptions = [
 ];
 
 const DefaultRepeatingDays = {
-  'mo': false,
-  'tu': false,
-  'we': false,
-  'th': false,
-  'fr': false,
-  'sa': false,
-  'su': false
+  mo: false,
+  tu: false,
+  we: false,
+  th: false,
+  fr: false,
+  sa: false,
+  su: false
 };
 
 const Tags = [
@@ -25,12 +25,12 @@ const Tags = [
 ];
 
 const getRandomArrayItem = (array) => {
-  const randomIndex = getRandomIntegerNumber(0, array.length);
+  const randomIndex = getRandomIntegerNumber(0, array.length - 1);
   return array[randomIndex];
 };
 
 const getRandomIntegerNumber = (min, max) => {
-  return min + (Math.floor(max * Math.random()));
+  return Math.floor(min + Math.random() * (max + 1 - min));
 };
 
 const getRandomDate = () => {
@@ -71,8 +71,8 @@ const generateTask = () => {
 
 const generateTasks = (count) => {
   return new Array(count)
-    .fill(``)
+    .fill(null)
     .map(generateTask);
 };
 
-export {generateTask, generateTasks};
+export {generateTask, generateTasks, getRandomIntegerNumber};

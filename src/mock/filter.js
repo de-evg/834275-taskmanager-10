@@ -1,3 +1,5 @@
+import {getRandomIntegerNumber} from './task.js';
+
 const filterNames = [
   `all`,
   `overdue`,
@@ -12,7 +14,7 @@ const generateFilters = () => {
   return filterNames.map((it) => {
     return {
       name: it,
-      count: Math.floor(Math.random() * 10)
+      count: getRandomIntegerNumber(0, 10)
     };
   });
 };
