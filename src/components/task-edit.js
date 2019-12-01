@@ -46,7 +46,7 @@ const createRepeatingDaysMarkup = (days, repeatingDays) => {
 };
 
 const createHashtagsMarkup = (tags) => {
-  return Array.from(tags)
+  return tags
     .map((tag) => {
       return (
         `<span class="card__hashtag-inner">
